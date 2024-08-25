@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { Text, View } from 'react-native'
 
 const Profile = () => {
   return (
@@ -11,4 +11,3 @@ const Profile = () => {
 
 export default Profile
 
-const styles = StyleSheet.create({})
