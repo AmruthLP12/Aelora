@@ -9,9 +9,13 @@
     }
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
+    "**/*.{js,jsx,ts,tsx}",
+    "**/*.{js,jsx,ts,tsx}",
+    ".expo/types/**/*.{js,jsx,ts,tsx}",
+    "expo-env.d.{js,jsx,ts,tsx}",
+    "app/_layout.{js,jsx,ts,tsx}",
+    "app/(tabs)/_layout.{js,jsx,ts,tsx}",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "app/_layout.jsx"  ]
+  ]
 }
