@@ -9,7 +9,8 @@ import { Link } from "expo-router";
 
 const SignUp = () => {
   const [form, setForm] = useState({
-    username:"",    email: "",
+    username: "",
+    email: "",
     password: "",
   });
 
@@ -61,7 +62,12 @@ const SignUp = () => {
             <Text className="text-lg text-gray-100 font-pregular">
               Have an account already?
             </Text>
-          <Link href='/sign-in' className="text-lg font-psemibold text-secondary">Sign In</Link>
+            <Link
+              href="/sign-in"
+              className="text-lg font-psemibold text-secondary"
+            >
+              Sign In
+            </Link>
           </View>
         </View>
       </ScrollView>
