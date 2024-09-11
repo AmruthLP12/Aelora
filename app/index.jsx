@@ -7,7 +7,13 @@ import { Image } from "react-native";
 import { images } from "../constants";
 import CustomButton from "../components/CustomButton";
 
+import { useGlobalContext } from "../context/GlobalProvider";
+
 export default function App() {
+  const { isLoading, isLoggedIn } = useGlobalContext();
+
+  if (!isLoading && isLoggedIn) return <Redirect href="/home" />;
+
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView contentContainerStyle={{ height: "100%" }}>
@@ -40,11 +46,15 @@ export default function App() {
             Where creativity meets innovation: embark on a journey of
             exploration with Aelora
           </Text>
-          <CustomButton title='Continue with Email' handlePress={( ) => router.push('/sign-in')} containerStyles="w-full mt-7"/>
+          <CustomButton
+            title="Continue with Email"
+            handlePress={() => router.push("/sign-in")}
+            containerStyles="w-full mt-7"
+          />
         </View>
       </ScrollView>
 
-      <StatusBar backgroundColor="#161622" style="light"/>
+      <StatusBar backgroundColor="#161622" style="light" />
     </SafeAreaView>
   );
 }

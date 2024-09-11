@@ -8,9 +8,10 @@ import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
 
 import { createUser } from "../../lib/appwrite";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 const SignUp = () => {
-  // const { setUser, setIsLogged } = useGlobalContext();
+  const { setUser, setIsLogged } = useGlobalContext();
 
   const [isSubmitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
@@ -27,8 +28,8 @@ const SignUp = () => {
     setSubmitting(true);
     try {
       const result = await createUser(form.email, form.password, form.username);
-      // setUser(result);
-      // setIsLogged(true);
+      setUser(result);
+      setIsLogged(true);
 
       router.replace("/home");
     } catch (error) {
@@ -41,10 +42,7 @@ const SignUp = () => {
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView>
-        <View
-          className="w-full flex justify-center h-full px-4 my-6"
-          
-        >
+        <View className="w-full flex justify-center h-full px-4 my-6">
           <Image
             source={images.logo}
             resizeMode="contain"

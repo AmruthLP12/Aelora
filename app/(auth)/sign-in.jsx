@@ -7,8 +7,11 @@ import FormField from "../../components/FormField";
 import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
 import { signIn } from "../../lib/appwrite";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 const SignIn = () => {
+  const { setUser, setIsLogged } = useGlobalContext();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -23,9 +26,11 @@ const SignIn = () => {
 
     setSubmitting(true);
     try {
-       await signIn(form.email, form.password);
-      // setUser(result);
-      // setIsLogged(true);
+      await signIn(form.email, form.password);
+      setUser(result);
+      setIsLogged(true);
+
+      Alert.alert("Success", "User signed in successfully")
 
       router.replace("/home");
     } catch (error) {
@@ -73,7 +78,12 @@ const SignIn = () => {
             <Text className="text-lg text-gray-100 font-pregular">
               Don&apos;t have a account?
             </Text>
-          <Link href='/sign-up' className="text-lg font-psemibold text-secondary">Sign Up</Link>
+            <Link
+              href="/sign-up"
+              className="text-lg font-psemibold text-secondary"
+            >
+              Sign Up
+            </Link>
           </View>
         </View>
       </ScrollView>
