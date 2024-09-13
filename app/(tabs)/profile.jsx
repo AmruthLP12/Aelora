@@ -1,19 +1,28 @@
 import React from "react";
 import { FlatList, Image, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
 import InfoBox from "../../components/InfoBox";
 import VideoCard from "../../components/VideoCard";
 import { icons } from "../../constants";
 import { useGlobalContext } from "../../context/GlobalProvider";
-import { getUserPosts } from "../../lib/appwrite";
+import { getUserPosts, signOut } from "../../lib/appwrite";
 import useAppwrite from "../../lib/useAppwrite";
+import { router } from "expo-router";
 
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
   const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
 
-  const logout = () => {};
+  const logout = async () => {
+    try {
+      await signOut();
+      setUser(null);
+      setIsLoggedIn(false);
+      router.replace("/sign-in");
+    } catch (error) {
+      console.error("Error signing out: ", error.message);
+    }
+  };
 
   return (
     <SafeAreaView className="bg-primary h-full">
