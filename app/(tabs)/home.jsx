@@ -17,17 +17,12 @@ const Home = () => {
   const { data: posts, refetch } = useAppwrite(getAllPosts);
   const { data: latestPosts } = useAppwrite(getLatestPosts);
 
-  console.log("User object:", user);
-
-
 
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
     setRefreshing(true);
     await refetch();
-    // your fetch call here to get new data
-    // then set refreshing to false
     setRefreshing(false);
   };
 
@@ -44,9 +39,15 @@ const Home = () => {
                 <Text className="font-pmedium text-sm text-gray-100">
                   Welcome back,
                 </Text>
-                <Text className="text-2xl font-psemibold text-white">
-                  {user?.username}
-                </Text>
+                {user ? (
+                  <Text className="text-2xl font-psemibold text-white">
+                    {user.username}
+                  </Text>
+                ) : (
+                  <Text className="text-2xl font-psemibold text-white">
+                    Guest
+                  </Text>
+                )}
               </View>
               <View className="mt-1.5">
                 <Image
