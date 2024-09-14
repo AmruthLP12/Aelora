@@ -16,18 +16,11 @@
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
-5. 🕸️ [Snippets](#snippets)
-6. 🔗 [Links](#links)
-7. 🚀 [More](#more)
-
-
 
 ## <a name="introduction">🤖 Introduction</a>
 
 Built with React Native for seamless user experiences, Animatable for captivating animations, and integrated with the dependable backend systems of Appwrite,
 this app showcases impressive design and functionality, enabling seamless sharing of AI videos within the community.
-
-
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
@@ -97,5 +90,3 @@ npm start
 **Expo Go**
 
 Download the [Expo Go](https://expo.dev/go) app onto your device, then use it to scan the QR code from Terminal and run.
-
- 
