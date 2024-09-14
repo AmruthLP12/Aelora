@@ -9,11 +9,10 @@ import { Link, router } from "expo-router";
 
 import { createUser, deleteAllSessions } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
+import LogoutButton from "../../components/LogoutButton";
 
 const SignUp = () => {
-  const { setUser, setIsLoggedIn } = useGlobalContext();
-
-  // deleteAllSessions();
+  const { setUser, setIsLogged } = useGlobalContext();
 
   const [isSubmitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
@@ -31,7 +30,7 @@ const SignUp = () => {
     try {
       const result = await createUser(form.email, form.password, form.username);
       setUser(result);
-      setIsLoggedIn(true);
+      setIsLogged(true);
 
       router.replace("/home");
     } catch (error) {
@@ -43,8 +42,14 @@ const SignUp = () => {
 
   return (
     <SafeAreaView className="bg-primary h-full">
+      <LogoutButton/>
       <ScrollView>
-        <View className="w-full flex justify-center h-full px-4 my-6">
+        <View
+          className="w-full flex justify-center h-full px-4 my-6"
+          // style={{
+          //   minHeight: Dimensions.get("window").height - 100,
+          // }}
+        >
           <Image
             source={images.logo}
             resizeMode="contain"
@@ -52,7 +57,7 @@ const SignUp = () => {
           />
 
           <Text className="text-2xl font-semibold text-white mt-10 font-psemibold">
-            Sign Up to Aelora
+            Sign Up to Aora
           </Text>
 
           <FormField
@@ -100,5 +105,6 @@ const SignUp = () => {
     </SafeAreaView>
   );
 };
+
 
 export default SignUp;

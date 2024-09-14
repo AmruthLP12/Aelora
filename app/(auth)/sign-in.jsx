@@ -10,11 +10,7 @@ import { getCurrentUser, signIn, deleteAllSessions } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
 
 const SignIn = () => {
-  // const { setUser, setIsLoggedIn } = useGlobalContext();
-
-  // deleteAllSessions();
-
-  const { setUser, setIsLoggedIn } = useGlobalContext();
+  const { setUser, setIsLogged } = useGlobalContext();
   const [isSubmitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
     email: "",
@@ -30,13 +26,9 @@ const SignIn = () => {
 
     try {
       await signIn(form.email, form.password);
-
       const result = await getCurrentUser();
-
       setUser(result);
-      setIsLoggedIn(true);
-
-      Alert.alert("Success", "User signed in successfully");
+      setIsLogged(true);
 
       Alert.alert("Success", "User signed in successfully");
       router.replace("/home");
@@ -50,14 +42,20 @@ const SignIn = () => {
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView>
-        <View className="w-full justify-center min-h-[85vh] px-4 my-6">
+        <View
+          className="w-full flex justify-center h-full px-4 my-6"
+          // style={{
+          //   minHeight: Dimensions.get("window").height - 100,
+          // }}
+        >
           <Image
             source={images.logo}
             resizeMode="contain"
-            className="w-[115px] h-[35px]"
+            className="w-[115px] h-[34px]"
           />
-          <Text className="text-2xl text-white text-semibold mt-10 font-psemibold">
-            Log in to Aelora
+
+          <Text className="text-2xl font-semibold text-white mt-10 font-psemibold">
+            Log in to Aora
           </Text>
 
           <FormField
@@ -67,6 +65,7 @@ const SignIn = () => {
             otherStyles="mt-7"
             keyboardType="email-address"
           />
+
           <FormField
             title="Password"
             value={form.password}
@@ -81,15 +80,15 @@ const SignIn = () => {
             isLoading={isSubmitting}
           />
 
-          <View className="justify-center pt-5 flex-row gap-2">
+          <View className="flex justify-center pt-5 flex-row gap-2">
             <Text className="text-lg text-gray-100 font-pregular">
-              Don&apos;t have a account?
+              Don't have an account?
             </Text>
             <Link
               href="/sign-up"
               className="text-lg font-psemibold text-secondary"
             >
-              Sign Up
+              Signup
             </Link>
           </View>
         </View>
@@ -99,3 +98,5 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
+
