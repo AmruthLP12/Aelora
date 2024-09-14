@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { Alert, Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { images } from "../../constants";
-import FormField from "../../components/FormField";
-import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
+import CustomButton from "../../components/CustomButton";
+import FormField from "../../components/FormField";
+import { images } from "../../constants";
 
-import { createUser, deleteAllSessions } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
-import LogoutButton from "../../components/LogoutButton";
+import { createUser } from "../../lib/appwrite";
 
 const SignUp = () => {
   const { setUser, setIsLogged } = useGlobalContext();
@@ -42,7 +41,6 @@ const SignUp = () => {
 
   return (
     <SafeAreaView className="bg-primary h-full">
-      <LogoutButton/>
       <ScrollView>
         <View
           className="w-full flex justify-center h-full px-4 my-6"
@@ -57,7 +55,7 @@ const SignUp = () => {
           />
 
           <Text className="text-2xl font-semibold text-white mt-10 font-psemibold">
-            Sign Up to Aora
+            Sign Up to Aelora
           </Text>
 
           <FormField
@@ -105,6 +103,5 @@ const SignUp = () => {
     </SafeAreaView>
   );
 };
-
 
 export default SignUp;
