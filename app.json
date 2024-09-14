@@ -20,7 +20,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package":"com.amruth.aelora"
+      "package": "com.amruth.aelora"
     },
     "web": {
       "bundler": "metro",
@@ -32,6 +32,17 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6919100e-831f-40cf-9bcb-a7ee15f077ed"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/6919100e-831f-40cf-9bcb-a7ee15f077ed"
     }
   }
 }

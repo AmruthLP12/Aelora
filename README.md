@@ -16,6 +16,7 @@
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
+5. 🪧 [Demo](#demo)
 
 ## <a name="introduction">🤖 Introduction</a>
 
@@ -90,3 +91,11 @@ npm start
 **Expo Go**
 
 Download the [Expo Go](https://expo.dev/go) app onto your device, then use it to scan the QR code from Terminal and run.
+
+## <a name="demo">🪧 Demo</a>
+
+Download APK
+
+For users who prefer to download the app directly, you can download the APK from the link below:
+
+[Download APK](https://drive.google.com/file/d/1hmRZP74Xo4zs1ITpqam-4ghAL4f0fHmD/view?usp=sharing)
