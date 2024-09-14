@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -16,6 +16,8 @@ const SignIn = () => {
     email: "",
     password: "",
   });
+
+  
 
   const submit = async () => {
     if (form.email === "" || form.password === "") {
@@ -38,6 +40,23 @@ const SignIn = () => {
       setSubmitting(false);
     }
   };
+
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        const currentUser = await getCurrentUser();
+        if (currentUser) {
+          setUser(currentUser);
+          setIsLogged(true);
+          router.replace("/home"); // Redirect to home if session is present
+        }
+      } catch (error) {
+        console.log("No active session found:", error.message);
+      }
+    };
+
+    checkSession();
+  }, []);
 
   return (
     <SafeAreaView className="bg-primary h-full">

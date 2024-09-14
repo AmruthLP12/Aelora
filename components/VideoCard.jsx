@@ -13,7 +13,6 @@ const VideoCard = ({
 }) => {
   const [play, setPlay] = useState(false);
 
- 
 
   // Check if creator exists, and use default values if it doesn't
   const username = creator?.username || "Unknown Creator";

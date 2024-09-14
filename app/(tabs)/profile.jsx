@@ -10,14 +10,14 @@ import useAppwrite from "../../lib/useAppwrite";
 import { router } from "expo-router";
 
 const Profile = () => {
-  const { user, setUser, setIsLoggedIn } = useGlobalContext();
+  const { user, setUser, setIsLogged } = useGlobalContext();
   const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
 
   const logout = async () => {
     try {
       await signOut();
       setUser(null);
-      setIsLoggedIn(false);
+      setIsLogged(false);
       router.replace("/sign-in");
     } catch (error) {
       console.error("Error signing out: ", error.message);
